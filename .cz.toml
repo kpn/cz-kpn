@@ -1,0 +1,11 @@
+[tool.commitizen]
+name = "cz_kpn"
+version_provider = "poetry"
+version_files = [
+    "scripts/build",
+    "CONTIRBUTING.md",
+    "Dockerfile:cz-kpn=="
+]
+bump_message = "BUMP: version $current_version → $new_version"
+commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
+update_changelog_on_bump = true

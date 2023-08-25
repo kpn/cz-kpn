@@ -1,0 +1,32 @@
+Ticket references
+----------------------
+
+On top of the prefixing, the ticket number the commit is related to must be included (i.e. SDET-61 or 11).
+All code changes and thus commits should be related to one or more tickets.
+If a ticket does not exist, one should be created.
+Tickets are important for tracebility.
+The ticket can come from any tool being used: github, jira, etc.
+
+Message subject and contents
+----------------------------
+
+The first line of the commit should contain the prefix, a
+short description of the commit and the ticket.
+The rest of the message can be used to explain more about the changes.
+
+Examples:
+
+###############################################################################
+BREAK: Change foobar into quux (#2053)
+
+We changed foobar into quux because the backend changed their implementation.
+This change will make the code more robust for future changes.
+###############################################################################
+FIX: use FOO instead of BAR (#BAR-2053)
+
+We changed BAR into FOO because the backend changed their implementation.
+This fix will make the code more robust for future changes.
+###############################################################################
+
+Think of this as an email that you write to other developers with the first line
+as a subject and the rest is the body of the email.

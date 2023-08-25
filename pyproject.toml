@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "cz-kpn"
+version = "3.1.0"
+description = "commitizen with kpn style"
+authors = ["Santiago Fraire Willemoes <santiago.fraire@kpn.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "cz_kpn", from = "src"}]
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+commitizen = "^3.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.2"
+black = "^23.3.0"
+ruff = "^0.0.262"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.plugins."commitizen.plugin"]
+cz_kpn = "cz_kpn:KPNCz"

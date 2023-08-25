@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+export PREFIX=""
+if [ -d '.venv' ] ; then
+    export PREFIX=".venv/bin/"
+fi
+
+${PREFIX}black cz_kpn tests --check --diff
+${PREFIX}ruff cz_kpn/ tests/
+${PREFIX}mypy cz_kpn/ tests
