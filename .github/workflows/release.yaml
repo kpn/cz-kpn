@@ -35,7 +35,7 @@ jobs:
       id: getversion
       run: |
         export CURRENT_VERSION=$(cz version -p)
-        echo "::set-output name=version::$CURRENT_VERSION"
+        echo "VERSION=$CURRENT_VERSION" >> $GITHUB_OUTPUT
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -43,9 +43,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
-      if: "${{ steps.getversion.outputs.version != '' }}"
+      if: "${{ steps.getversion.outputs.VERSION != '' }}"
       with:
         context: .
         push: true
         tags: |
-          kpnnl/cz-kpn:${{ steps.getversion.outputs.version }}
+          kpnnl/cz-kpn:${{ steps.getversion.outputs.VERSION }}
