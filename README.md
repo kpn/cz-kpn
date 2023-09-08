@@ -1,5 +1,9 @@
 # KPN'S COMMITIZEN
 
+[![PyPI Package latest release](https://img.shields.io/pypi/v/cz-kpn.svg?style=flat-square)](https://pypi.org/project/cz-kpn/)
+[![PyPI Package download count (per month)](https://img.shields.io/pypi/dm/cz-kpn?style=flat-square)](https://pypi.org/project/cz-kpn/)
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/kpnnl/cz-kpn?label=latest%20version)
+
 ![Example commit](docs/images/commit.gif)
 
 ## About
