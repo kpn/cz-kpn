@@ -1,3 +1,9 @@
+## 3.2.3 (2023-09-08)
+
+### Improvements
+
+- **ci**: Add sleep to let pypi publish py package ([625c993](https://github.com/kpn/cz-kpn/commit/625c9931d81325475ce227695bc854024da5471e))
+
 ## 3.2.2 (2023-09-08)
 
 ### Fixes
