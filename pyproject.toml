@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cz-kpn"
-version = "3.2.1"
+version = "3.2.2"
 description = "commitizen with kpn style"
 authors = ["Santiago Fraire Willemoes <santiago.fraire@kpn.com>"]
 license = "MIT"

@@ -1,3 +1,9 @@
+## 3.2.2 (2023-09-08)
+
+### Fixes
+
+- Get current version in action ([233eaef](https://github.com/kpn/cz-kpn/commit/233eaef820a0ab941c73f6d2ce7385f0353c22ed))
+
 ## 3.2.1 (2023-09-08)
 
 ### Fixes
