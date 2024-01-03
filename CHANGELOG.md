@@ -1,3 +1,9 @@
+## 3.2.4 (2024-01-03)
+
+### Improvements
+
+- Bump docker github action ([4474f52](https://github.com/kpn/cz-kpn/commit/4474f52cf3334aaa5713651b3642d5ff1cf75256))
+
 ## 3.2.3 (2023-09-08)
 
 ### Improvements
