@@ -1,3 +1,9 @@
+## 3.2.5 (2024-04-15)
+
+### Fixes
+
+- release pipeline ([1ab09a8](https://github.com/kpn/cz-kpn/commit/1ab09a840ba1e83ed57f524b5dba7fd385940ab0))
+
 ## 3.2.4 (2024-01-03)
 
 ### Improvements
