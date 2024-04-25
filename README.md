@@ -83,9 +83,9 @@ cz c
 ### With docker
 
 ```sh
-docker run --rm -it -v $(pwd):/app kpnnl/cz-kpn:3.2.8 'cz -n cz_kpn commit'
+cmd="cz -n cz_kpn commit"
+docker run --rm -it -v $(pwd):/app kpnnl/cz-kpn:3.2.8 $cmd
 ```
-
 
 ## Features
 
