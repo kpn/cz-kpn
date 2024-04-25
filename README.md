@@ -235,7 +235,7 @@ jobs:
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog_increment_filename: body.md
-          extra_requirements: 'cz-kpn'
+          extra_requirements: "cz-kpn"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
