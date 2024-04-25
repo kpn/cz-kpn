@@ -7,7 +7,7 @@ fi
 
 set -x
 
-${PREFIX}black cz_kpn tests
-${PREFIX}ruff cz_kpn tests --fix
+${PREFIX}ruff format src tests
+${PREFIX}ruff check src tests --fix
 
 

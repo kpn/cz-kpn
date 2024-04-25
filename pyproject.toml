@@ -22,8 +22,8 @@ commitizen = "^3.8.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.2"
-black = "^23.3.0"
-ruff = "^0.0.262"
+ruff = "^0.4.0"
+mypy = "^1.10.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -32,3 +32,13 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.plugins."commitizen.plugin"]
 cz_kpn = "cz_kpn:KPNCz"
+
+[tool.ruff.lint.isort]
+known-first-party = ["cz_kpn", "tests"]
+
+[tool.ruff.lint]
+select = ["I"]
+
+[tool.mypy]
+mypy_path = "src"
+ignore_missing_imports = true
