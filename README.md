@@ -80,6 +80,13 @@ or the shortcut
 cz c
 ```
 
+### With docker
+
+```sh
+docker run --rm -it -v $(pwd):/app kpnnl/cz-kpn:3.2.8 'cz -n cz_kpn commit'
+```
+
+
 ## Features
 
 ### Client tool to assist in the creation of a commit
