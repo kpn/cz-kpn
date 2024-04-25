@@ -1,3 +1,9 @@
+## 3.2.6 (2024-04-25)
+
+### Improvements
+
+- Increase wait time to release to docker ([178af5e](https://github.com/kpn/cz-kpn/commit/178af5e32943be5d57e5a1f69d6fcc85de06b8a8))
+
 ## 3.2.5 (2024-04-15)
 
 ### Fixes
