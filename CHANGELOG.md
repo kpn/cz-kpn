@@ -1,3 +1,9 @@
+## 3.2.8 (2024-04-25)
+
+### Improvements
+
+- Format readme ([451178c](https://github.com/kpn/cz-kpn/commit/451178c30831769c348fe362e2d5a38e56394f9f))
+
 ## 3.2.7 (2024-04-25)
 
 ### Improvements
