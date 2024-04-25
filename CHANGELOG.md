@@ -1,3 +1,9 @@
+## 3.2.7 (2024-04-25)
+
+### Improvements
+
+- Use ruff latest and mypy ([d89f25e](https://github.com/kpn/cz-kpn/commit/d89f25e7613cfd7c993fd5ef68da91187c9c4321))
+
 ## 3.2.6 (2024-04-25)
 
 ### Improvements

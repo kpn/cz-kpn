@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apk add --update -t --no-cache git curl alpine-sdk
 
 RUN ["pip", "install", "-U", "--no-cache-dir", "pip"]
-RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.6"]
+RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.7"]
 
 ##### run
 ENTRYPOINT [ "/bin/sh", "-c" ]
