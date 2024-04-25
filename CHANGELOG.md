@@ -1,3 +1,13 @@
+## 3.2.9 (2024-04-25)
+
+### Fixes
+
+- Set safe dir in docker image ([4c8f508](https://github.com/kpn/cz-kpn/commit/4c8f508b496c9f6e4371dfd1a9ce986a510aa05b))
+
+### Improvements
+
+- Update README ([3c077b5](https://github.com/kpn/cz-kpn/commit/3c077b54739507eb7c07ffdc3f7fcaeeb81da5a8))
+
 ## 3.2.8 (2024-04-25)
 
 ### Improvements
