@@ -1,3 +1,14 @@
+## 3.2.10 (2024-09-12)
+
+### Fixes
+
+- Test script ([200015a](https://github.com/kpn/cz-kpn/commit/200015af6145b42a5188ebef8b5f95a4fbaaca59))
+- Ignore type hints ([7c603e5](https://github.com/kpn/cz-kpn/commit/7c603e536b9245d196f5d5f00f64ece613c0cc0e))
+
+### Improvements
+
+- Bump deps ([19d2503](https://github.com/kpn/cz-kpn/commit/19d250351fdfc2a8f73c38b51ecee98f233aecc1))
+
 ## 3.2.9 (2024-04-25)
 
 ### Fixes
