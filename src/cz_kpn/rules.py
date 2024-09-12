@@ -1,5 +1,6 @@
 import os
 from string import Template
+from typing import Any, Iterable
 
 from commitizen import git
 from commitizen.cz.base import BaseCommitizen
@@ -100,17 +101,17 @@ class KPNCz(BaseCommitizen):
         with open(filepath, "r") as f:
             return f.read()
 
-    def changelog_message_builder_hook(
-        self, parsed_message: dict, commit: git.GitCommit
-    ) -> dict:
-        commit_url = self.config.settings.get("commit_url")
+    def changelog_message_builder_hook(  # type: ignore
+        self, message: dict[str, Any], commit: git.GitCommit
+    ) -> dict[str, Any]:
+        commit_url: str = self.config.settings.get("commit_url")  # type: ignore
         if commit_url:
             t = Template(commit_url)
             url = t.safe_substitute(COMMIT_REV=commit.rev)
             short_rev = commit.rev[:7]
-            msg = parsed_message["message"]
-            parsed_message["message"] = f"{msg} ([{short_rev}]({url}))"
-        return parsed_message
+            msg = message["message"]
+            message["message"] = f"{msg} ([{short_rev}]({url}))"
+        return message
 
     def schema_pattern(self) -> str:
         return COMMIT_PARSER
