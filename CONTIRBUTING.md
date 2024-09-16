@@ -27,7 +27,7 @@ poetry install
 ### Running docker locally
 
 ```bash
-docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:3.3.0a0 'cz ls'
+docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:3.3.0a1 'cz ls'
 ```
 
 ### Testing

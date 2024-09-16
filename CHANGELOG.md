@@ -1,3 +1,9 @@
+## 3.3.0a1 (2024-09-16)
+
+### Fixes
+
+- Install cz-kpn and patched version ([552603d](https://github.com/kpn/cz-kpn/commit/552603d15bb134b7598310d9bd4bf650c029f64f))
+
 ## 3.3.0a0 (2024-09-16)
 
 ### Features
