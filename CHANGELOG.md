@@ -1,3 +1,9 @@
+## 3.3.0a0 (2024-09-16)
+
+### Features
+
+- Add monorepo support ([369e2d0](https://github.com/kpn/cz-kpn/commit/369e2d004cb07a0aec0aa17de33086cf53e2b002))
+
 ## 3.2.10 (2024-09-12)
 
 ### Fixes
