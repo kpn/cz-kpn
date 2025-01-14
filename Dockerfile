@@ -18,7 +18,7 @@ RUN set -eux; \
 
 
 RUN ["pip", "install", "-U", "--no-cache-dir", "pip"]
-RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.11"]
+RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.12"]
 RUN ["git", "config", "--global", "--add", "safe.directory", "/app"]
 
 ##### run

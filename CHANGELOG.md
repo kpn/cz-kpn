@@ -1,3 +1,9 @@
+## 3.2.12 (2025-01-14)
+
+### Fixes
+
+- Add dependencies to enable proper git usage in image ([2773ea8](https://github.com/kpn/cz-kpn/commit/2773ea85760342fc815a59e123e49a0ab0d57426))
+
 ## 3.2.11 (2025-01-14)
 
 ### Fixes

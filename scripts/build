@@ -1,4 +1,4 @@
 #!/bin/sh -ex
 # scope: local development
 
-docker build -t kpnnl/cz-kpn:3.2.11 .
+docker build -t kpnnl/cz-kpn:3.2.12 .
