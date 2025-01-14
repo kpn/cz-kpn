@@ -1,3 +1,9 @@
+## 3.2.11 (2025-01-14)
+
+### Fixes
+
+- Add bash to docker image ([7db2288](https://github.com/kpn/cz-kpn/commit/7db22885f078b2a990a8f24bb1d03450687d51a8))
+
 ## 3.2.10 (2024-09-12)
 
 ### Fixes
