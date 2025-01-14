@@ -5,7 +5,7 @@ LABEL org.label-schema.description="KPN'S COMMITIZEN"
 LABEL org.opencontainers.image.source="https://github.com/kpn/cz-kpn"
 WORKDIR /app
 
-RUN apk add --update -t --no-cache git curl alpine-sdk
+RUN apk add --update -t --no-cache git curl alpine-sdk bash
 
 RUN ["pip", "install", "-U", "--no-cache-dir", "pip"]
 RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.10"]
