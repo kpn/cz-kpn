@@ -3,7 +3,7 @@ name = "cz_kpn"
 version_provider = "poetry"
 version_files = [
     "scripts/build",
-    "CONTIRBUTING.md",
+    "CONTRIBUTING.md",
     "Dockerfile:cz-kpn==",
     "README.md:^docker"
 ]

@@ -212,9 +212,13 @@ commands:
     version             get the version of the installed commitizen or the current project (default: installed commitizen)
 ```
 
+## Testing
+
+For details about supported Python versions and local testing instructions, see [PYTHON_TESTING.md](./PYTHON_TESTING.md).
+
 ## Contributing
 
-Read [Contributing guide](./CONTIRBUTING.md)
+Read [Contributing guide](./CONTRIBUTING.md)
 
 ## Using in a github action
 
@@ -239,6 +243,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
+        id: cz
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           changelog_increment_filename: body.md
@@ -247,7 +252,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: "body.md"
-          tag_name: ${{ env.REVISION }}
+          tag_name: ${{ steps.cz.outputs.version }}  # Or use env.REVISION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```

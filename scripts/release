@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/bash -ex
 
 export PREFIX=""
 if [ -d '.venv' ] ; then

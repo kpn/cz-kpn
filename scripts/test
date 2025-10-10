@@ -5,4 +5,7 @@ if [ -d '.venv' ] ; then
     export PREFIX=".venv/bin/"
 fi
 
-${PREFIX}pytest tests/
+echo "Running parallel tests on multiple Python versions with tox..."
+echo "Supported Python versions: 3.10, 3.11, 3.12, 3.13"
+echo ""
+${PREFIX}tox -p
