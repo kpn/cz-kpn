@@ -1,3 +1,16 @@
+## 4.0.1 (2025-10-10)
+
+### Fixes
+
+- Use proper shebang ([296dcb8](https://github.com/kpn/cz-kpn/commit/296dcb892664b72b195dbe0ac2d2d48f0e095e08))
+- Linting errors ([fc218e4](https://github.com/kpn/cz-kpn/commit/fc218e4a646797fbbbb9d4fef066d250025defca))
+- Update to latest poetry ([1d9b958](https://github.com/kpn/cz-kpn/commit/1d9b9585fc885fac5973dfd8853f8453fcf35dae))
+
+### Improvements
+
+- Update gh actions ([6cfb88e](https://github.com/kpn/cz-kpn/commit/6cfb88ef9df57a353c215ac01eb18d94de44d5ec))
+- Update recommendation for gh actions ([14fff3b](https://github.com/kpn/cz-kpn/commit/14fff3b3b855fdf75c3ddb7e267dfe28cfb82f4b))
+
 ## 4.0.0 (2025-10-10)
 
 ### BREAKING CHANGES

@@ -84,7 +84,7 @@ cz c
 
 ```sh
 cmd="cz -n cz_kpn commit"
-docker run --rm -it -v $(pwd):/app kpnnl/cz-kpn:4.0.0 $cmd
+docker run --rm -it -v $(pwd):/app kpnnl/cz-kpn:4.0.1 $cmd
 ```
 
 ## Features
