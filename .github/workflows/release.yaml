@@ -3,22 +3,22 @@ name: Release package to Pypi
 on:
   push:
     tags:
-      - '[0-9].[0-9]+.[0-9]+**'
+      - "[0-9].[0-9]+.[0-9]+**"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      PYTHON_VERSION: '3.13'
+      PYTHON_VERSION: "3.13"
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Setup python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install Poetry
@@ -46,7 +46,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         if: "${{ steps.getversion.outputs.VERSION != '' }}"
