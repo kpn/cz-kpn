@@ -174,7 +174,6 @@ version = "<YOUR_CURRENT_VERSION>"
 version_files = [
   "src/__version__.py"
 ]
-slack_channel = "ddci-notifications"
 ```
 
 ## Help
@@ -232,12 +231,12 @@ on:
 
 jobs:
   bump-version:
-    if: "!startsWith(github.event.head_commit.message, 'BUMP:')"
+    if: ${{ !startsWith(github.event.head_commit.message, 'BUMP:') }}
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
     steps:
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -256,5 +255,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+The `secrets.PERSONAL_ACCESS_TOKEN` is required in order to trigger other actions observing the tag creation.
+An alternative is to use `workflow_call` to trigger the workflow from the current workflow.
 
 Read more in [commitizen docs](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/)
