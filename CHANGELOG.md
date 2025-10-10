@@ -1,3 +1,9 @@
+## 4.0.0 (2025-10-10)
+
+### BREAKING CHANGES
+
+- dropped python3.9, support py3.10+, updated commitizen ([9950f2c](https://github.com/kpn/cz-kpn/commit/9950f2c3df762dca96c1db33af81c1494e612ae9))
+
 ## 3.2.12 (2025-01-14)
 
 ### Fixes
