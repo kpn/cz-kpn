@@ -1,10 +1,16 @@
-[tool.poetry]
+[project]
 name = "cz-kpn"
 version = "4.0.0"
 description = "commitizen with kpn style"
-authors = ["Santiago Fraire Willemoes <santiago.fraire@kpn.com>"]
 license = "MIT"
+keywords = ["commitizen", "release-management", "autorelease"]
+dynamic = ["classifiers"]
 readme = "README.md"
+authors = [{name = "Santiago Fraire Willemoes", email = "santiago.frairewillemoes@kpn.com"}]
+requires-python = '>=3.10,<4.0'
+dependencies = ['commitizen (>=3.29.0,<4.0.0)']
+
+[tool.poetry]
 packages = [{ include = "cz_kpn", from = "src" }]
 classifiers = [
     "Topic :: Software Development :: Build Tools",
@@ -12,13 +18,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 include = ["CHANGELOG.md", "docs/images/commit.gif", "docs/images/bump.gif"]
-repository = "https://github.com/kpn/cz-kpn"
-keywords = ["commitizen", "release-management", "autorelease"]
-
-
-[tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-commitizen = "^4.9.0"
+requires-poetry = '>=2.0,<3.0'
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4"
@@ -27,11 +27,8 @@ mypy = "^1.18"
 tox = "^4.31.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ['poetry-core (>=2.0,<3.0)']
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.plugins."commitizen.plugin"]
-cz_kpn = "cz_kpn:KPNCz"
 
 [tool.ruff.lint.isort]
 known-first-party = ["cz_kpn", "tests"]
@@ -42,3 +39,9 @@ select = ["I"]
 [tool.mypy]
 mypy_path = "src"
 ignore_missing_imports = true
+
+[project.urls]
+repository = "https://github.com/kpn/cz-kpn"
+
+[project.entry-points."commitizen.plugin"]
+cz_kpn = "cz_kpn:KPNCz"
