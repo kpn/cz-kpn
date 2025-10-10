@@ -2,7 +2,7 @@
 
 ### Requirements
 
-- Python 3.910+
+- Python 3.10+
 - Poetry 1.2+
 - Git 1.8+
 
@@ -32,6 +32,20 @@ docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:3.2.12 'cz ls'
 
 ### Testing
 
+For local testing across all supported Python versions, use:
+
+```bash
+poetry run tox -p auto
+```
+or the test script:
+```bash
+./scripts/test
+```
+Both methods will run tests for all Python versions in parallel.
+
+For single-version testing:
 ```bash
 pytest tests
 ```
+
+For details about supported Python versions and local testing instructions, see [PYTHON_TESTING.md](./PYTHON_TESTING.md).

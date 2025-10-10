@@ -16,10 +16,9 @@ RUN set -eux; \
     ; \
     git lfs install;
 
-
-RUN ["pip", "install", "-U", "--no-cache-dir", "pip"]
-RUN ["pip", "install", "-U", "--no-cache-dir", "cz-kpn==3.2.12"]
-RUN ["git", "config", "--global", "--add", "safe.directory", "/app"]
+RUN pip install -U --no-cache-dir pip && \
+    pip install -U --no-cache-dir cz-kpn==3.2.12 && \
+    git config --global --add safe.directory /app
 
 ##### run
 ENTRYPOINT [ "/bin/sh", "-c" ]

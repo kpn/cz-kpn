@@ -89,11 +89,7 @@ class KPNCz(BaseCommitizen):
         )
 
     def schema(self) -> str:
-        return (
-            "<CHANGE_TYPE>(<SCOPE>): <SUBJECT> (#<ISSUE_ID>)\n"
-            "\n"
-            "<LONG_DESCRIPTION>"
-        )
+        return "<CHANGE_TYPE>(<SCOPE>): <SUBJECT> (#<ISSUE_ID>)\n\n<LONG_DESCRIPTION>"
 
     def info(self) -> str:
         dir_path = os.path.dirname(os.path.realpath(__file__))
