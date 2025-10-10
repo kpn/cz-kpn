@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_kpn"
-version_provider = "poetry"
+version_provider = "pep621"
 version_files = [
     "scripts/build",
     "CONTRIBUTING.md",
