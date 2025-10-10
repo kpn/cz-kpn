@@ -1,4 +1,5 @@
-#!/bin/bash -ex
+#!/usr/bin/env bash
 # scope: local development
+set -e
 
 docker build -t kpnnl/cz-kpn:4.0.0 .
