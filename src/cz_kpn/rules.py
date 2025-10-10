@@ -1,9 +1,10 @@
 import os
 from string import Template
-from typing import Any, Iterable
+from typing import Any
 
 from commitizen import git
 from commitizen.cz.base import BaseCommitizen
+from commitizen.defaults import Questions
 
 from cz_kpn.consts import (
     BREAK,
@@ -45,8 +46,8 @@ class KPNCz(BaseCommitizen):
         "FIX": "Fixes",
     }
 
-    def questions(self) -> list:
-        questions = [
+    def questions(self) -> Questions:
+        questions: list[dict[str, str | list[dict[str, str]]]] = [
             {
                 "type": "list",
                 "name": "prefix",
@@ -64,7 +65,7 @@ class KPNCz(BaseCommitizen):
         ]
         return questions
 
-    def message(self, answers) -> str:
+    def message(self, answers: dict) -> str:
         prefix = answers["prefix"]
         title = answers["title"]
         issue = answers["issue"]
