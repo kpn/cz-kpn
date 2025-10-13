@@ -17,7 +17,7 @@ RUN set -eux; \
     git lfs install;
 
 RUN pip install -U --no-cache-dir pip && \
-    pip install -U --no-cache-dir cz-kpn==4.0.2 && \
+    pip install -U --no-cache-dir cz-kpn==4.0.3 && \
     git config --global --add safe.directory /app
 
 ##### run

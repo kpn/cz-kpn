@@ -1,3 +1,9 @@
+## 4.0.3 (2025-10-13)
+
+### Improvements
+
+- Try docker release ([7e6bc87](https://github.com/kpn/cz-kpn/commit/7e6bc87c6e6b72d7999ca674f105fa8dab151a9a))
+
 ## 4.0.2 (2025-10-10)
 
 ### Improvements
