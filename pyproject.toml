@@ -1,6 +1,6 @@
 [project]
 name = "cz-kpn"
-version = "4.0.3"
+version = "4.1.0"
 description = "commitizen with kpn style"
 license = "MIT"
 keywords = ["commitizen", "release-management", "autorelease"]

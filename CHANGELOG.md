@@ -1,3 +1,9 @@
+## 4.1.0 (2025-11-07)
+
+### Features
+
+- Add support for commitizen v4 ([91ba51e](https://github.com/kpn/cz-kpn/commit/91ba51e995d3c69041217aff09b3e57571824618))
+
 ## 4.0.3 (2025-10-13)
 
 ### Improvements
