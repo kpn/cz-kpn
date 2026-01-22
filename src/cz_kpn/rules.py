@@ -5,6 +5,7 @@ from typing import Any
 
 from commitizen import git
 from commitizen.cz.base import BaseCommitizen
+from commitizen.cz.utils import required_validator
 from commitizen.question import CzQuestion
 
 from cz_kpn.consts import (
@@ -12,13 +13,28 @@ from cz_kpn.consts import (
     BREAK_DESCR,
     BUMP_PATTERN,
     COMMIT_PARSER,
+    COMMIT_PARSER_STRICT,
+    COMMIT_URL,
     FIX,
     FIX_DESCR,
     NEW,
     NEW_DESCR,
     OPT,
     OPT_DESCR,
+    STRICT_CHECK,
 )
+
+
+def _parse_subject(text: str) -> str:
+    value = text.strip(".").strip()
+    msg = ""
+    if not value:
+        msg = "Subject is required."
+    elif len(value) < 3:
+        msg = "Subject must be at least 3 characters long."
+    elif len(value) > 79:
+        msg = "Subject must be at most 79 characters long."
+    return required_validator(value, msg=msg)
 
 
 class KPNCz(BaseCommitizen):
@@ -47,6 +63,17 @@ class KPNCz(BaseCommitizen):
         "FIX": "Fixes",
     }
 
+    def parse_issue(self, text: str) -> str:
+        """Parse issue ID.
+
+        If valid it's converted to uppercase.
+        if strict enabled, it's required.
+        """
+        kpn_strict = self.config.settings.get(STRICT_CHECK, False)
+        if kpn_strict:
+            return required_validator(text.upper(), msg="Issue ID is required")
+        return text.upper()
+
     def questions(self) -> Iterable[CzQuestion]:
         questions: list[CzQuestion] = [
             {
@@ -60,8 +87,18 @@ class KPNCz(BaseCommitizen):
                     {"value": BREAK, "name": f"{BREAK} - {BREAK_DESCR}"},
                 ],
             },
-            {"type": "input", "name": "title", "message": "Short description:\n"},
-            {"type": "input", "name": "issue", "message": "Issue ID:\n"},
+            {
+                "type": "input",
+                "name": "title",
+                "message": "Short description:\n",
+                "filter": _parse_subject,
+            },
+            {
+                "type": "input",
+                "name": "issue",
+                "message": "Issue ID:\n",
+                "filter": self.parse_issue,
+            },
             {"type": "input", "name": "description", "message": "Long description:\n"},
         ]
         return questions
@@ -99,10 +136,10 @@ class KPNCz(BaseCommitizen):
         with open(filepath, "r") as f:
             return f.read()
 
-    def changelog_message_builder_hook(  # type: ignore
+    def changelog_message_builder_hook(
         self, message: dict[str, Any], commit: git.GitCommit
     ) -> dict[str, Any]:
-        commit_url: str = self.config.settings.get("commit_url")  # type: ignore
+        commit_url: str | None = self.config.settings.get(COMMIT_URL)  # type: ignore
         if commit_url:
             t = Template(commit_url)
             url = t.safe_substitute(COMMIT_REV=commit.rev)
@@ -112,4 +149,7 @@ class KPNCz(BaseCommitizen):
         return message
 
     def schema_pattern(self) -> str:
+        kpn_strict = self.config.settings.get(STRICT_CHECK, False)
+        if kpn_strict:
+            return COMMIT_PARSER_STRICT
         return COMMIT_PARSER

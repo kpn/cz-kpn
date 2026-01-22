@@ -8,5 +8,5 @@ version_files = [
     "README.md:^docker"
 ]
 bump_message = "BUMP: version $current_version → $new_version"
-commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
 update_changelog_on_bump = true
+kpn_commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
