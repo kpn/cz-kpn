@@ -2,4 +2,4 @@
 # scope: local development
 set -e
 
-docker build -t kpnnl/cz-kpn:4.1.0 .
+docker build -t kpnnl/cz-kpn:5.0.0 .

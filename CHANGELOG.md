@@ -1,3 +1,13 @@
+## 5.0.0 (2026-01-23)
+
+### BREAKING CHANGES
+
+- **settings**: `commit_url` has been renamed to `kpn_commit_url`
+
+### Features
+
+- **settings**: Add `kpn_strict_check` and `kpn_commit_url`
+
 ## 4.1.0 (2025-11-07)
 
 ### Features
