@@ -22,3 +22,9 @@ FIX_DESCR = (
 
 BUMP_PATTERN = r"^(NEW|CHANGE|FIX|OPT|BREAK)"
 COMMIT_PARSER = r"^(?P<change_type>NEW|CHANGE|FIX|OPT|BREAK)(?:\((?P<scope>[^()\r\n]*)\)|\()?:?\s(?P<message>.+)"  # noqa
+COMMIT_PARSER_STRICT = r"(?P<keyword>BREAK|CHANGE|NEW|FIX|OPT)(\((?=[a-z]))?(?P<scope>(?<=\()(test|ci|docs|build)(?=\)))?((?<=[a-z])\))?: .{3,79} (?P<ticket>\(#[A-Z]+-[0-9]+\)|\(#[0-9]+\))"  # noqa
+
+
+## CUSTOM SETTINGS KEYS
+STRICT_CHECK = "kpn_strict_check"
+COMMIT_URL = "kpn_commit_url"

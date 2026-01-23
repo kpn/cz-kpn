@@ -36,6 +36,20 @@ NEW: Add login screen (#MY-123)
 
 [MORE INFO](./src/cz_kpn/cz_kpn_info.txt)
 
+## Custom configuration
+
+This rules support custom configuration. You can set the following options in your `pyproject.toml` file:
+
+```toml
+[tool.commitizen]
+# ...
+kpn_strict_check = true
+kpn_commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
+```
+
+- `kpn_strict_check`: Enable strict mode during `cz check` and `cz commit`.
+- `kpn_commit_url`: URL to the commit page on your version control system. Which will be used to generate the changelog.
+
 ## Installation
 
 Install globally in your system
@@ -68,7 +82,7 @@ Just run:
 cz bump
 ```
 
-### Commiting
+### Committing
 
 ```sh
 cz commit
@@ -149,15 +163,10 @@ More info in [commitizen website](https://commitizen-tools.github.io/commitizen/
 cz check --rev-range ugnu348hg84hg84g..j8fj84g84h84hg83h2392
 ```
 
-### Adding commit link to the changelog
+You can also check against the last version:
 
-Add to the configuration the `commit_url` parameter, using `$COMMIT_REV` as
-variable, you can take a look at this project's [.cz.toml](.cz.toml) as an example
-
-```toml
-[tool.commitizen]
-...
-commit_url = "https://YOUR_DOMAIN/projects/YOUR_GROUP/repos/YOUR_PROJECT/commits/$COMMIT_REV"
+```bash
+cz check --rev-range "$(cz version -p).."
 ```
 
 ## Configuration
@@ -186,15 +195,19 @@ Contents:
 
 ```bash
 $ cz --help
-Commitizen is a cli tool to generate conventional commits.
-For more information about the topic go to https://conventionalcommits.org/
+usage: cz [-h] [--config CONFIG] [--debug] [-n NAME] [-nr NO_RAISE]
+          {init,commit,c,ls,example,info,schema,bump,changelog,ch,check,version} ...
+
+Commitizen is a powerful release management tool that helps teams maintain consistent and meaningful commit messages while automating version management.
+For more information, please visit https://commitizen-tools.github.io/commitizen
 
 options:
   -h, --help            show this help message and exit
+  --config CONFIG       the path of configuration file
   --debug               use debug mode
   -n NAME, --name NAME  use the given commitizen (default: cz_conventional_commits)
   -nr NO_RAISE, --no-raise NO_RAISE
-                        comma separated error codes that won't rise error, e.g: cz -nr 1,2,3 bump. See codes at
+                        comma separated error codes that won't raise error, e.g: cz -nr 1,2,3 bump. See codes at
                         https://commitizen-tools.github.io/commitizen/exit_codes/
 
 commands:
