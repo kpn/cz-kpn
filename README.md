@@ -39,17 +39,19 @@ OPT(test): Add unittest for missing feature
 
 ## Custom configuration
 
-This rules support custom configuration. You can set the following options in your `pyproject.toml` file:
+This rules support custom configuration. You can set any of the following options in your `pyproject.toml` file (non of them are mandatory):
 
 ```toml
 [tool.commitizen]
 # ...
 kpn_strict_check = true
 kpn_commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
+kpn_app_name = "foobar"
 ```
 
 - `kpn_strict_check`: Enable strict mode during `cz check` and `cz commit`.
 - `kpn_commit_url`: URL to the commit page on your version control system. Which will be used to generate the changelog.
+- `kpn_app_name`: Use the `scope` to filter commits when bumping and creating a changelog. **Ideal for monorepos**.
 
 ## Installation
 
@@ -188,6 +190,8 @@ version = "<YOUR_CURRENT_VERSION>"
 version_files = [
   "src/__version__.py"
 ]
+bump_message = "BUMP: version ${current_version} → ${new_version}"
+annotated_tag = true # recommended!
 ```
 
 ## Help
@@ -278,3 +282,83 @@ The `secrets.PERSONAL_ACCESS_TOKEN` is required in order to trigger other action
 An alternative is to use `workflow_call` to trigger the workflow from the current workflow.
 
 Read more in [commitizen docs](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/)
+
+## Monorepos
+
+You can now use `cz-kpn` in monorepos by leveraging the `kpn_app_name` option in the scope.
+
+Let's say you have this setup:
+
+```sh
+.
+├── app-orders
+│   └── .cz.toml
+└── app-analytics
+    └── .cz.toml
+```
+
+Each with their own config, like:
+
+```toml
+# app-orders/.cz.toml
+[tool.commitizen]
+name = "cz_kpn"
+version = "0.0.1"
+version_scheme = "semver2"
+tag_format = "${version}-orders"
+bump_message = "BUMP: version ${current_version}-orders → ${new_version}-orders"
+ignored_tag_formats = ["${version}-*"] # Avoid noise from other tags
+update_changelog_on_bump = true
+major_version_zero = true
+
+# The important stuff!!
+annotated_tag = true # required!
+kpn_app_name = "orders"
+```
+
+```toml
+# app-analytics/.cz.toml
+[tool.commitizen]
+name = "cz_kpn"
+version = "0.0.1"
+version_scheme = "semver2"
+tag_format = "${version}-analytics"
+bump_message = "BUMP: version ${current_version}-analytics → ${new_version}-analytics"
+ignored_tag_formats = ["${version}-*"] # Avoid noise from other tags
+update_changelog_on_bump = true
+major_version_zero = true
+
+# The important stuff!!
+annotated_tag = true # required!
+kpn_app_name = "analytics"
+```
+
+Now we can run each of them individually, and if you have a commit log like this:
+
+```
+FIX(analytics): Use proper config
+NEW(orders): Add tables
+OPT: Update generic stuff
+```
+
+You can bump each of the parts individually, and they will pick up their relevant commits, and each will have their own changelog:
+
+```sh
+# This one will only see NEW(orders)
+cz --config app-orders/.cz.toml bump --yes
+
+# This one will only see FIX(analytics)
+cz --config app-analytics/.cz.toml bump --yes
+```
+
+This is how the output would look
+
+```sh
+.
+├── app-orders
+│   ├── .cz.toml
+│   └── CHANGELOG.md
+└── app-analytics
+    ├── .cz.toml
+    └── CHANGELOG.md
+```
