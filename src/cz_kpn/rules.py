@@ -74,7 +74,7 @@ class KPNCz(BaseCommitizen):
             return required_validator(text.upper(), msg="Issue ID is required")
         return text.upper()
 
-    def questions(self) -> Iterable[CzQuestion]:
+    def questions(self) -> list[CzQuestion]:
         questions: list[CzQuestion] = [
             {
                 "type": "list",
@@ -86,6 +86,11 @@ class KPNCz(BaseCommitizen):
                     {"value": OPT, "name": f"{OPT} - {OPT_DESCR}"},
                     {"value": BREAK, "name": f"{BREAK} - {BREAK_DESCR}"},
                 ],
+            },
+            {
+                "type": "input",
+                "name": "scope",
+                "message": "Scope or App name:\n",
             },
             {
                 "type": "input",
@@ -105,12 +110,15 @@ class KPNCz(BaseCommitizen):
 
     def message(self, answers: Mapping[str, Any]) -> str:
         prefix = answers["prefix"]
+        scope = answers["scope"]
         title = answers["title"]
         issue = answers["issue"]
         description = answers["description"]
         message = ""
-        if prefix:
+        if prefix and not scope:
             message += f"{prefix}:"
+        elif prefix and scope:
+            message += f"{prefix}({scope}):"
         if title:
             message += f" {title}"
         if issue:
@@ -139,7 +147,7 @@ class KPNCz(BaseCommitizen):
     def changelog_message_builder_hook(
         self, message: dict[str, Any], commit: git.GitCommit
     ) -> dict[str, Any]:
-        commit_url: str | None = self.config.settings.get(COMMIT_URL)  # type: ignore
+        commit_url: str | None = self.config.settings.get(COMMIT_URL)
         if commit_url:
             t = Template(commit_url)
             url = t.safe_substitute(COMMIT_REV=commit.rev)

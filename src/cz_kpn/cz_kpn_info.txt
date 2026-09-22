@@ -22,7 +22,7 @@ BREAK: Change foobar into quux (#2053)
 We changed foobar into quux because the backend changed their implementation.
 This change will make the code more robust for future changes.
 ###############################################################################
-FIX: use FOO instead of BAR (#BAR-2053)
+FIX(backend): use FOO instead of BAR (#BAR-2053)
 
 We changed BAR into FOO because the backend changed their implementation.
 This fix will make the code more robust for future changes.
