@@ -26,7 +26,7 @@ jobs:
           changelog_increment_filename: body.md
           extra_requirements: "cz-kpn"
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           body_path: "body.md"
           tag_name: ${{ steps.cz.outputs.version }} # This is recognized by the action, env.REVISION is also available
