@@ -1,0 +1,32 @@
+version: 2
+updates:
+  # Maintain GitHub Actions (e.g., actions/checkout)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "06:00"
+    # Wait for the new version to be 7 days old before creating a PR
+    cooldown:
+      default-days: 7
+    # Use KPN commit convention
+    commit-message:
+      prefix: "OPT(actions)"
+    # Group all Action updates into one PR
+    groups:
+      all-actions-dependencies:
+        patterns:
+          - "*"
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: "OPT(deps)" # trigger a patch release in parent package after dependabot PR is merged
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
