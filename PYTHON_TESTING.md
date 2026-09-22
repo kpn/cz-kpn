@@ -10,15 +10,15 @@ curl https://pyenv.run | bash
 
 2. Install multiple Python versions:
 ```bash
-pyenv install 3.10.12
 pyenv install 3.11.10
 pyenv install 3.12.7
 pyenv install 3.13.0
+pyenv install 3.14.0
 ```
 
 3. Set local Python versions for this project:
 ```bash
-pyenv local 3.10.12 3.11.10 3.12.7 3.13.0
+pyenv local 3.11.10 3.12.7 3.13.0 3.14
 ```
 
 4. Test with tox (tests all configured Python versions):
@@ -45,7 +45,7 @@ python-version: ${{ env.PYTHON_VERSION }}
 ## Tox configuration
 Local testing can be done with:
 ```bash
-poetry run tox -p auto
+uv run tox -p auto
 ```
 or with the test script:
 ```bash

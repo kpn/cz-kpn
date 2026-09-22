@@ -3,7 +3,7 @@
 ### Requirements
 
 - Python 3.10+
-- Poetry 1.2+
+- uv 0.12+
 - Git 1.8+
 
 ### Install dependencies
@@ -11,8 +11,8 @@
 ```bash
 python -m venv .venv
 . .venv/bin/activate
-pip install -U pip poetry
-poetry install
+pip install -U pip uv
+uv sync
 ```
 
 ### Publishing
@@ -35,7 +35,7 @@ docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:5.0.0 'cz ls'
 For local testing across all supported Python versions, use:
 
 ```bash
-poetry run tox -p auto
+uv run tox -p auto
 ```
 or the test script:
 ```bash
