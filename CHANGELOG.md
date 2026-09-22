@@ -1,3 +1,10 @@
+## 5.2.0 (2026-09-22)
+
+### Features
+
+- Add monorepo support ([7675a0a](https://github.com/kpn/cz-kpn/commit/7675a0a3cfd205519d7c7016683d9f6dc7edd9f9))
+- **commit**: Add scope to cz commit ([88c875e](https://github.com/kpn/cz-kpn/commit/88c875e9453bb1f03b399b5a02d497b9dde8e49e))
+
 ## 5.1.1 (2026-09-22)
 
 ### Improvements
