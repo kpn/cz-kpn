@@ -16,7 +16,7 @@ which uses KPN commit rules to bump versions, update files and generate changelo
 ### Schema
 
 ```bash
-<PREFIX> <SUBJECT> (#<ISSUE_ID>)
+<PREFIX>(<SCOPE>): <SUBJECT> (#<ISSUE_ID>)
 
 <LONG_DESCRIPTION>
 ```
@@ -28,10 +28,11 @@ which uses KPN commit rules to bump versions, update files and generate changelo
 | `NEW`   | `MINOR`         | New functionality                                                  |
 | `BREAK` | `MAJOR`         | Breaking changes                                                   |
 
-### Example
+### Examples
 
 ```
 NEW: Add login screen (#MY-123)
+OPT(test): Add unittest for missing feature
 ```
 
 [MORE INFO](./src/cz_kpn/cz_kpn_info.txt)
