@@ -28,3 +28,4 @@ COMMIT_PARSER_STRICT = r"(?P<keyword>BREAK|CHANGE|NEW|FIX|OPT)(\((?=[a-z]))?(?P<
 ## CUSTOM SETTINGS KEYS
 STRICT_CHECK = "kpn_strict_check"
 COMMIT_URL = "kpn_commit_url"
+APP_NAME = "kpn_app_name"

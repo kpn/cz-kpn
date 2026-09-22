@@ -1,4 +1,5 @@
 import os
+import re
 from collections.abc import Iterable, Mapping
 from string import Template
 from typing import Any
@@ -9,6 +10,7 @@ from commitizen.cz.utils import required_validator
 from commitizen.question import CzQuestion
 
 from cz_kpn.consts import (
+    APP_NAME,
     BREAK,
     BREAK_DESCR,
     BUMP_PATTERN,
@@ -67,7 +69,7 @@ class KPNCz(BaseCommitizen):
         """Parse issue ID.
 
         If valid it's converted to uppercase.
-        if strict enabled, it's required.
+        If strict enabled, it's required.
         """
         kpn_strict = self.config.settings.get(STRICT_CHECK, False)
         if kpn_strict:
@@ -135,6 +137,26 @@ class KPNCz(BaseCommitizen):
             "This change will make the code more robust for future changes.\n"
         )
 
+    def filter_commits(self, commits: list[git.GitCommit]) -> list[git.GitCommit]:
+        """We use this hook to filter the commits which have the given app as the scope."""
+        app_name: str | None = self.config.settings.get(APP_NAME)  # type: ignore
+        if not app_name:
+            return commits
+        kpn_strict = self.config.settings.get(STRICT_CHECK, False)
+        if kpn_strict:
+            raise RuntimeError("`kpn_app_name` only works with `kpn_strict = False`")
+
+        regex_pattern = self.schema_pattern()
+        pattern = re.compile(regex_pattern)
+        filtered_commits = []
+        for commit in commits:
+            match_result = pattern.match(commit.message)
+            if match_result:
+                scope = match_result.group("scope")
+                if app_name == scope:
+                    filtered_commits.append(commit)
+        return filtered_commits
+
     def schema(self) -> str:
         return "<CHANGE_TYPE>(<SCOPE>): <SUBJECT> (#<ISSUE_ID>)\n\n<LONG_DESCRIPTION>"
 
@@ -147,7 +169,7 @@ class KPNCz(BaseCommitizen):
     def changelog_message_builder_hook(
         self, message: dict[str, Any], commit: git.GitCommit
     ) -> dict[str, Any]:
-        commit_url: str | None = self.config.settings.get(COMMIT_URL)
+        commit_url: str | None = self.config.settings.get(COMMIT_URL)  # type: ignore
         if commit_url:
             t = Template(commit_url)
             url = t.safe_substitute(COMMIT_REV=commit.rev)
