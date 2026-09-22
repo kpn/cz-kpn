@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-export PREFIX=""
-if [ -d '.venv' ] ; then
-    export PREFIX=".venv/bin/"
-fi
-
 echo "Running parallel tests on multiple Python versions with tox..."
-echo "Supported Python versions: 3.10, 3.11, 3.12, 3.13"
+echo "Supported Python versions: 3.10, 3.11, 3.12, 3.13, 3.14"
 echo ""
-${PREFIX}tox -p
+uv run tox -p

@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_kpn"
-version_provider = "pep621"
+version_provider = "uv"
 version_files = [
     "scripts/build",
     "CONTRIBUTING.md",

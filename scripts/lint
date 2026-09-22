@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-export PREFIX=""
-if [ -d '.venv' ] ; then
-    export PREFIX=".venv/bin/"
-fi
-
-${PREFIX}ruff check src/ tests/
-${PREFIX}ruff format --check src/ tests/
-${PREFIX}mypy src/ tests
+uv run ruff check src/ tests/
+uv run ruff format --check src/ tests/
+uv run mypy src/ tests

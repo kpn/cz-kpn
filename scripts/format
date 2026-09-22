@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
-export PREFIX=""
-if [ -d '.venv' ] ; then
-    export PREFIX=".venv/bin/"
-fi
-
-set -x
-
-${PREFIX}ruff format src tests
-${PREFIX}ruff check src tests --fix
+uv run ruff format src tests
+uv run ruff check src tests --fix

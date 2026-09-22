@@ -52,7 +52,7 @@ kpn_commit_url = "https://github.com/kpn/cz-kpn/commit/$COMMIT_REV"
 
 ## Installation
 
-Install globally in your system
+Install in your system
 
 ```bash
 python -m pip install --user cz-kpn
@@ -61,6 +61,10 @@ python -m pip install --user cz-kpn
 Or add `cz-kpn` to your project:
 
 ```sh
+# uv
+uv add --dev cz-kpn
+
+# poetry
 poetry add cz-kpn --group dev
 ```
 
@@ -133,7 +137,7 @@ Note: The `--changelog` flag is not required if `update_changelog_on_bump = true
 
 ![Example bump](docs/images/bump.gif)
 
-### Automatic changelog generation
+### Automatic Changelog Generation
 
 If you don't want to generate a tag and bump the version, run:
 
@@ -150,7 +154,7 @@ cz changelog --incremental
 to add only the missing changes.
 This is useful if you have manually modified your changelog.
 
-### Validate commit message
+### Validate Commit Message
 
 This command will tell you if there are any valid or invalid commit messages in
 the given range.
@@ -232,7 +236,7 @@ For details about supported Python versions and local testing instructions, see 
 
 Read [Contributing guide](./CONTRIBUTING.md)
 
-## Using in a github action
+## Using in a GitHub Action
 
 ```yaml
 name: Bump version and generate changelog
@@ -249,7 +253,7 @@ jobs:
     name: "Bump version and create changelog with commitizen"
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
