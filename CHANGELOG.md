@@ -1,3 +1,14 @@
+## 5.1.0 (2026-09-22)
+
+### Features
+
+- Move to uv ([6b888c9](https://github.com/kpn/cz-kpn/commit/6b888c9abda316e45019cda1e1f56badcae7a058))
+
+### Improvements
+
+- Add nix shell ([d85e29a](https://github.com/kpn/cz-kpn/commit/d85e29a7b8fa76de1969b928c6c916c581fdb345))
+- Add dependabot ([fe3bb6f](https://github.com/kpn/cz-kpn/commit/fe3bb6fa28cbc4e9a3a3deec50dd45952829f249))
+
 ## 5.0.0 (2026-01-23)
 
 ### BREAKING CHANGES
