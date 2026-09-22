@@ -1,3 +1,9 @@
+## 5.1.1 (2026-09-22)
+
+### Improvements
+
+- **ci**: Refactor and use setup-cz ([9f9da00](https://github.com/kpn/cz-kpn/commit/9f9da0052c86d6485f294ac82ccd78bb42082522))
+
 ## 5.1.0 (2026-09-22)
 
 ### Features

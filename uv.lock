@@ -212,7 +212,7 @@ wheels = [
 
 [[package]]
 name = "cz-kpn"
-version = "5.1.0"
+version = "5.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "commitizen" },
