@@ -16,19 +16,47 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      - name: Create bump and changelog
-        # The new version is also available as an environment variable under REVISION
-        # or you can access using `${{ steps.cz.outputs.version }}`
-        uses: commitizen-tools/commitizen-action@master
+      - uses: commitizen-tools/setup-cz@main
+        with:
+          python-version: "3.x"
+          extra-requirements: "cz_kpn"
+      - name: Commitizen Bump
         id: cz
-        with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          changelog_increment_filename: body.md
-          extra_requirements: "cz-kpn"
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: "body.md"
-          tag_name: ${{ steps.cz.outputs.version }} # This is recognized by the action, env.REVISION is also available
+        run: |
+          cz bump --yes --annotated-tag
+          version=$(cz version --project)
+          version_tag=$(cz version --project --tag)
+
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "version_tag=$version_tag" >> $GITHUB_OUTPUT
+
+          git push --follow-tags
+      - name: Check if last commit starts with BUMP
+        id: check_bump
+        run: |
+          if git log -1 --pretty=%B | grep -iq '^bump:'; then
+            echo "::notice::Last commit is a BUMP commit. Continuing..."
+            echo "was_bumped=true" >> $GITHUB_OUTPUT
+          else
+            echo "::notice::Nothing to do, last commit is not a BUMP commit."
+            echo "was_bumped=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Github Release
+        if: ${{ steps.check_bump.outputs.was_bumped == 'true' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: "${{ github.token }}"
+          NEW_VERSION: "${{ steps.cz.outputs.version }}"
+          NEW_VERSION_TAG: "${{ steps.cz.outputs.version_tag }}"
+        run: |
+          cz changelog --dry-run "${NEW_VERSION}" > .changelog.md
+          gh release create "${NEW_VERSION_TAG}" --notes-file .changelog.md
+      - name: Trigger release
+        if: ${{ steps.check_bump.outputs.was_bumped == 'true' }}
+        run: |
+      - name: trigger other workflow
+        if: steps.bump-version.outputs.bumped == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run release.yaml \
+            -f "version=${{ steps.cz.outputs.version_tag }}"
