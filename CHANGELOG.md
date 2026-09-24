@@ -1,3 +1,9 @@
+## 5.2.1 (2026-09-24)
+
+### Fixes
+
+- **ci**: Correct wrong step ([92c37c1](https://github.com/kpn/cz-kpn/commit/92c37c19475fa7d41c87e417ea522d76e8f19826))
+
 ## 5.2.0 (2026-09-22)
 
 ### Features

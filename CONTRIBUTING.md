@@ -27,7 +27,7 @@ uv sync
 ### Running docker locally
 
 ```bash
-docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:5.2.0 'cz ls'
+docker run --rm -v $(pwd):/app -w /app --name cz-kpn kpnnl/cz-kpn:5.2.1 'cz ls'
 ```
 
 ### Testing
