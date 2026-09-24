@@ -52,9 +52,6 @@ jobs:
           gh release create "${NEW_VERSION_TAG}" --notes-file .changelog.md
       - name: Trigger release
         if: ${{ steps.check_bump.outputs.was_bumped == 'true' }}
-        run: |
-      - name: trigger other workflow
-        if: steps.bump-version.outputs.bumped == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
