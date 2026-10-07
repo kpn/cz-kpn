@@ -1,3 +1,9 @@
+## 5.2.2 (2026-10-07)
+
+### Improvements
+
+- **docs**: Update to monorepo regex ([99f60cc](https://github.com/kpn/cz-kpn/commit/99f60ccb248769f594f9d3c354718c8db1be1fb3))
+
 ## 5.2.1 (2026-09-24)
 
 ### Fixes
