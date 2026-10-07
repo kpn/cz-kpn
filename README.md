@@ -307,7 +307,7 @@ version = "0.0.1"
 version_scheme = "semver2"
 tag_format = "${version}-orders"
 bump_message = "BUMP: version ${current_version}-orders → ${new_version}-orders"
-ignored_tag_formats = ["${version}-*"] # Avoid noise from other tags
+ignored_tag_formats = ["${version}-(?!orders$).*"] # Avoid noise from other tags
 update_changelog_on_bump = true
 major_version_zero = true
 
@@ -324,7 +324,7 @@ version = "0.0.1"
 version_scheme = "semver2"
 tag_format = "${version}-analytics"
 bump_message = "BUMP: version ${current_version}-analytics → ${new_version}-analytics"
-ignored_tag_formats = ["${version}-*"] # Avoid noise from other tags
+ignored_tag_formats = ["${version}-(?!analytics$).*"] # Avoid noise from other tags
 update_changelog_on_bump = true
 major_version_zero = true
 
